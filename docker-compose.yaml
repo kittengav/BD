@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:14.8-alpine3.18
+    container_name: zoodatabase
+    env_file:
+      - /.env
+    volumes:
+      - ./sql_requests/create_tables_script.sql:/docker-entrypoint-initdb.d/001.sql
+      - zoo_data:/var/lib/postgresql/data
+    networks:
+      - inner-net
+    ports:
+      - "5431:5432"
+  wsgi:
+    container_name: web-app
+    build:
+      context: .
+    env_file:
+      - /.env
+    ports:
+      - "8000:8001"
+    depends_on:
+      - db
+    networks:
+      - inner-net
+
+networks:
+  inner-net:
+    name: inner-net
+
+volumes:
+  zoo_data:

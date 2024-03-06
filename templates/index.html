@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>ZOO</title>
+<link rel="stylesheet" href="{{url_for('static', path='/css/base.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', path='/css/card.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', path='/css/form.css')}}"/>
+</head>
+<body class="body">
+<ul class="_nav" style="list-style: none">
+    <li><button onclick="window.location.href='/animals'">Animals</button></li>
+    <li><button onclick="window.location.href='/animal_types'">Animal Types</button></li>
+    <li><button onclick="window.location.href='/aviaries'">Aviaries</button></li>
+    <li><button onclick="window.location.href='/aviary_types'">Aviary Types</button></li>
+</ul>
+{% block content %}
+{% endblock %}
+</body>
+</html>
