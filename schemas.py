@@ -54,7 +54,7 @@ class Animal(BaseModel):
 
     @classmethod
     def from_row(cls, row):
-        return cls.model_validate({"id": row[0], "name": row[1], "description": row[2], "type_id": row[3]})
+        return cls.model_validate({"id": row[0], "name": row[1], "description": row[2], "type_id": row[3], "aviary_id": row[4]})
 
     class Config:
         __table_name__ = "animals"
